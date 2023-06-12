@@ -103,7 +103,8 @@ jobs:
     - name: Download kernel source
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
-        git clone ${{ env.KERNEL_SOURCE }} -b ${{ env.KERNEL_SOURCE_BRANCH }} android-kernel --depth=1
+        wget -O 5.10.66.tar.gz https://android.googlesource.com/kernel/common/+archive/refs/heads/deprecated/android12-5.10-2021-11.tar.gz
+        tar -C gcc-32/ -zxvf 5.10.66.tar.gz
 
     - name: Download source boot image
       if: env.BUILD_BOOT_IMG == 'true'
